@@ -1,6 +1,11 @@
 import { getPositions } from './keyboard'
 import { hero } from './hero'
-import { move } from './actions'
+import {
+  // interact,
+  move
+  // pickUp,
+  // use
+} from './actions'
 import { vector } from './math'
 
 export function onAction({

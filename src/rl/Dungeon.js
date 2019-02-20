@@ -89,13 +89,13 @@ export function Dungeon(props) {
   }
 
   return {
-    ...props,
     init,
     getLevelSize,
     getRooms,
     getRandomPoint,
     getActorAt,
     draw,
-    schedulerAddEnemies
+    schedulerAddEnemies,
+    ...props
   }
 }

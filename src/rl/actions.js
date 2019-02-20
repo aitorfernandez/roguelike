@@ -7,3 +7,21 @@ export function move(actor) {
     }
   }
 }
+
+export function interact() {
+  return () => {
+    // TBD
+  }
+}
+
+export function pickUp() {
+  return () => {
+    // TBD
+  }
+}
+
+export function use() {
+  return () => {
+    // TBD
+  }
+}

@@ -14,7 +14,7 @@ __This repo are some ideas for the [7DRL Challenge 2019](https://itch.io/jam/7dr
 - [x] Hero
 - [x] Enemies
 - [x] FOV
-- [ ] IA
+- [ ] IA + Pathfinding
 - [ ] Items
 
 ## Screenshot
