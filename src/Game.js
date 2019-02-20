@@ -1,5 +1,11 @@
-import React from 'react'
+import React, {
+  useEffect,
+  useRef
+} from 'react'
 import styled from 'styled-components'
+
+import { director } from './rl/director'
+import { dungeonScene as scene } from './rl/dungeonScene'
 
 export const Wrapper = styled.main`
   margin: 0 auto;
@@ -7,10 +13,23 @@ export const Wrapper = styled.main`
   padding: 24px;
 `
 
-const Game = () => (
-  <Wrapper>
-    Roguelike
-  </Wrapper>
-)
+function Game() {
+  const gameEl = useRef()
+
+  useEffect(() => {
+    director.init()
+    director.runScene(scene)
+
+    gameEl.current.appendChild(
+      director.getContainer()
+    )
+  })
+
+  return (
+    <Wrapper>
+      <div ref={gameEl} />
+    </Wrapper>
+  )
+}
 
 export default Game
