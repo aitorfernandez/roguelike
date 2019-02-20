@@ -1,4 +1,7 @@
-import { Display } from 'rot-js'
+import {
+  Display,
+  RNG
+} from 'rot-js'
 
 const winSize = {
   width: 32,
@@ -20,6 +23,8 @@ function init() {
   if (display) {
     throw Error('Display already initialized.')
   }
+
+  RNG.setSeed(Date.now())
 
   display = new Display(options)
 }
@@ -48,6 +53,8 @@ function runScene(scene) {
 }
 
 export const director = {
+  winSize,
+
   init,
   getContainer,
   runScene

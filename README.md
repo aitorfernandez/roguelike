@@ -5,9 +5,9 @@ Prototype and ideas for [7DRL Challenge 2019](https://itch.io/jam/7drl-challenge
 ## Tasks
 
 - [x] Scenes
-- [ ] Dungeons
-- [ ] Tiles
-- [ ] Characters
+- [x] Dungeons
+- [x] Tiles
+- [ ] Hero
 - [ ] Enemies
 - [ ] Items
 - [ ] IA
