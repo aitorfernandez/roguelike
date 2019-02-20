@@ -1,19 +1,23 @@
 import { RNG } from 'rot-js'
 
 import { director } from './director'
+import { getFov } from './fov'
 import { Level } from './Level'
 import { vector } from './math'
 import { wall } from './tiles'
 
 let levels = null
+let memory = null
 let runningLevel = null
 
 function init() {
   levels = []
+  memory = []
   runningLevel = 0
 
   const level = Level(/* 0, TODO: this.area */)
   levels[0] = level
+  memory[0] = {}
 }
 
 function getLevelSize() {
@@ -52,11 +56,25 @@ function draw(display, viewport) {
   const tiles = getTiles()
   const enemies = getEnemies()
 
+  const fov = getFov()
+
+  Object.keys(fov).forEach((key) => {
+    // mark as explored
+    memory[runningLevel][key] = true
+  })
+
   ;[tiles, enemies].forEach((actors) => {
     Object.keys(actors).forEach((key) => {
-      actors[key].draw(
-        display, viewport
-      )
+      if (
+        true
+        // Object.prototype.hasOwnProperty.call(memory[runningLevel], key)
+      ) {
+        actors[key].draw(
+          display,
+          viewport,
+          Object.prototype.hasOwnProperty.call(fov, key)
+        )
+      }
     })
   })
 }

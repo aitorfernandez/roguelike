@@ -8,7 +8,7 @@ Prototype and ideas for [7DRL Challenge 2019](https://itch.io/jam/7drl-challenge
 - [x] Dungeons
 - [x] Tiles
 - [x] Hero
-- [ ] Enemies
-- [ ] FOV
-- [ ] Items
+- [x] Enemies
+- [x] FOV
 - [ ] IA
+- [ ] Items

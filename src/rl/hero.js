@@ -8,6 +8,8 @@ export const hero = Character({
   fg: '#fff',
   name: 'You!',
 
+  fov: 6,
+
   act() {
     console.log(`${this} act`)
     director.engine.lock()

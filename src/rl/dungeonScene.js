@@ -1,3 +1,4 @@
+import { calculateFov } from './fov'
 import { crypt } from './crypt'
 import { director } from './director'
 import { hero } from './hero'
@@ -21,6 +22,10 @@ function init() {
 
   director.scheduler.add(hero, true)
   director.engine.start()
+}
+
+function onEnter() {
+  calculateFov(dungeon)
 }
 
 function update() {
@@ -56,12 +61,14 @@ function handleInput(event) {
 
   if (typeof action === 'function') {
     action()
+    calculateFov(dungeon)
     director.engine.unlock()
   }
 }
 
 export const dungeonScene = Scene({
   init,
+  onEnter,
   update,
   draw,
   handleInput

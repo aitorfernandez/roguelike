@@ -4,6 +4,8 @@ import { mergeWith } from './utils'
 const characterProto = {
   groups: ['characters'],
 
+  opaque: true,
+
   speed: 1,
 
   getSpeed() {

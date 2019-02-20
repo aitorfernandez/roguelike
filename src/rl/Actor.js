@@ -8,7 +8,7 @@ const actorProto = {
   pos: vector(),
 
   draw(
-    display, viewport = { x: 0, y: 0 }
+    display, viewport = { x: 0, y: 0 }, fov = true
   ) {
     const {
       pos,
@@ -21,7 +21,7 @@ const actorProto = {
       pos.x - viewport.x,
       pos.y - viewport.y,
       ch,
-      fg,
+      fov ? fg : '#262626',
       bg
     )
   },
