@@ -27,6 +27,18 @@ function init() {
   RNG.setSeed(Date.now())
 
   display = new Display(options)
+
+  const handleInput = (event) => {
+    display.clear()
+
+    if (runningScene) {
+      runningScene.handleInput(event)
+      runningScene.update()
+      runningScene.draw(display)
+    }
+  }
+
+  window.addEventListener('keydown', handleInput)
 }
 
 function getContainer() {

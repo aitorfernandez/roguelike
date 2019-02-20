@@ -2,6 +2,7 @@ import { RNG } from 'rot-js'
 
 import { Level } from './Level'
 import { vector } from './math'
+import { wall } from './tiles'
 
 let levels = null
 let runningLevel = null
@@ -35,6 +36,13 @@ function getRandomPoint() {
   return vector(x, y)
 }
 
+function getActorAt(pos) {
+  return (
+    getTiles()[pos]
+    || wall
+  )
+}
+
 function draw(display, viewport) {
   const tiles = getTiles()
 
@@ -52,6 +60,7 @@ const dungeonProto = {
   getLevelSize,
   getRooms,
   getRandomPoint,
+  getActorAt,
   draw
 }
 

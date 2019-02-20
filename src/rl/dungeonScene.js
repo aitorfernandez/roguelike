@@ -1,15 +1,22 @@
 import { crypt } from './crypt'
 import { director } from './director'
 import { hero } from './hero'
+import { onAction } from './onAction'
 import { Scene } from './Scene'
 import { vector } from './math'
 
 const viewport = vector()
+let dungeon = null
+
+const dungeons = [
+  crypt // TODO: add more dungeons here
+]
 
 function init() {
-  crypt.init()
+  dungeon = dungeons[0]
+  dungeon.init()
 
-  hero.pos = crypt.getRandomPoint()
+  hero.pos = dungeon.getRandomPoint()
 }
 
 function update() {
@@ -20,7 +27,7 @@ function update() {
   const {
     width: wLevel,
     height: hLevel
-  } = crypt.getLevelSize()
+  } = dungeon.getLevelSize()
 
   viewport.x = Math.max(0, hero.pos.x - (wSize / 2))
   viewport.x = Math.min(viewport.x, wLevel - wSize)
@@ -30,7 +37,7 @@ function update() {
 }
 
 function draw(display) {
-  crypt.draw(
+  dungeon.draw(
     display, viewport
   )
   hero.draw(
@@ -38,8 +45,19 @@ function draw(display) {
   )
 }
 
+function handleInput(event) {
+  const action = onAction({
+    event, dungeon
+  })
+
+  if (typeof action === 'function') {
+    action()
+  }
+}
+
 export const dungeonScene = Scene({
   init,
   update,
-  draw
+  draw,
+  handleInput
 })
