@@ -5,7 +5,7 @@ const enemyProto = {
   groups: ['enemies'],
 
   act() {
-    console.log(`${this} act`)
+    console.log(`${this} act patrol`)
   }
 }
 
