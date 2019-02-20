@@ -24,6 +24,10 @@ const actorProto = {
       fg,
       bg
     )
+  },
+
+  toString() {
+    return `${this.name}`
   }
 }
 

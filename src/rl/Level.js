@@ -1,6 +1,7 @@
 import { Map } from 'rot-js'
 
 import { director } from './director'
+import { populateEnemies } from './populateEnemies'
 import { populateTiles } from './populateTiles'
 
 export function Level(
@@ -21,11 +22,14 @@ export function Level(
   )
 
   const tiles = populateTiles(map)
+  const enemies = populateEnemies(tiles /* TODO: level */)
+
   const rooms = map.getRooms()
 
   return {
     levelSize,
     rooms,
     tiles,
+    enemies
   }
 }

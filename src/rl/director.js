@@ -1,6 +1,8 @@
 import {
   Display,
-  RNG
+  Engine,
+  RNG,
+  Scheduler
 } from 'rot-js'
 
 const winSize = {
@@ -14,6 +16,9 @@ const options = {
   fontSize: 24,
   forceSquareRatio: true
 }
+
+const scheduler = new Scheduler.Speed()
+const engine = new Engine(scheduler)
 
 let display = null
 let runningScene = null
@@ -66,6 +71,9 @@ function runScene(scene) {
 
 export const director = {
   winSize,
+
+  scheduler,
+  engine,
 
   init,
   getContainer,

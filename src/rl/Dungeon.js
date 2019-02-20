@@ -1,5 +1,6 @@
 import { RNG } from 'rot-js'
 
+import { director } from './director'
 import { Level } from './Level'
 import { vector } from './math'
 import { wall } from './tiles'
@@ -27,6 +28,10 @@ function getTiles() {
   return levels[runningLevel].tiles
 }
 
+function getEnemies() {
+  return levels[runningLevel].enemies
+}
+
 function getRandomPoint() {
   const rooms = getRooms()
 
@@ -45,8 +50,9 @@ function getActorAt(pos) {
 
 function draw(display, viewport) {
   const tiles = getTiles()
+  const enemies = getEnemies()
 
-  ;[tiles].forEach((actors) => {
+  ;[tiles, enemies].forEach((actors) => {
     Object.keys(actors).forEach((key) => {
       actors[key].draw(
         display, viewport
@@ -55,13 +61,22 @@ function draw(display, viewport) {
   })
 }
 
+function schedulerAddEnemies() {
+  const enemies = getEnemies()
+
+  Object.values(enemies).forEach((enemy) => (
+    director.scheduler.add(enemy, true)
+  ))
+}
+
 const dungeonProto = {
   init,
   getLevelSize,
   getRooms,
   getRandomPoint,
   getActorAt,
-  draw
+  draw,
+  schedulerAddEnemies
 }
 
 export function Dungeon(props) {

@@ -15,8 +15,12 @@ const dungeons = [
 function init() {
   dungeon = dungeons[0]
   dungeon.init()
+  dungeon.schedulerAddEnemies()
 
   hero.pos = dungeon.getRandomPoint()
+
+  director.scheduler.add(hero, true)
+  director.engine.start()
 }
 
 function update() {
@@ -52,6 +56,7 @@ function handleInput(event) {
 
   if (typeof action === 'function') {
     action()
+    director.engine.unlock()
   }
 }
 
